@@ -1,5 +1,6 @@
 inventory = 0
 stock = ""
+rejected_entries = 0
 
 while (stock !="quit"):
     stock = input("Enter stock quantity: ").lower()
@@ -13,8 +14,11 @@ while (stock !="quit"):
         break
     elif "-" in stock:
         print("No negative numbers")
+        rejected_entries += 1
     else:
         print("Error")
+        rejected_entries += 1
 
-print(inventory)
+print("Total Units Processed: " + str(inventory))
+print("Number of Failed/Rejected Entries: " + str(rejected_entries))
 
