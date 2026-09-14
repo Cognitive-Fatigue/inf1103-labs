@@ -3,5 +3,11 @@ stock = ""
 
 while (stock !="quit"):
     stock = input("Enter stock quantity: ").lower()
-    stock = int(stock)
+    if stock.isdigit():
+        stock = int(stock)
+    elif stock == "quit":
+        break
+    else:
+        print("Error")
+
 
