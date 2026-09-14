@@ -1,18 +1,19 @@
 inventory = 0
 rejected_entries = 0
+stock = ""
 
-while (input !="quit"):
-    stock = input("Enter stock quantity").lower()
+while (stock !="quit"):
+    stock = input("Enter stock quantity: ").lower()
     if stock.isdigit():
+        stock = int(stock)
         if stock < 0:
-            print("Stock cannot be negative")
-            rejected_entires +=1
+            print("No negative numbers")
+            rejected_entries += 1
         else:
-            stock = int(stock)
             inventory = inventory + stock
     else:
         print("Error")
-        rejected_entires +=1
+        rejected_entries +=1
 
     if inventory > 500:
         print("Alert")
@@ -20,5 +21,5 @@ while (input !="quit"):
     else:
         continue
 
-print("Total Units Processed: " + inventory)
-print("Number of Failed/Rejected Entries " + rejected_entires)
+print("Total Units Processed: " + str(inventory))
+print("Number of Failed/Rejected Entries " + str(rejected_entries))
