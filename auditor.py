@@ -6,6 +6,9 @@ while (stock !="quit"):
     if stock.isdigit():   # only accepts digits, does not recognise "-" sign
         stock = int(stock)
         inventory += stock
+        if inventory > 500:
+                print("Alert")
+                break
     elif stock == "quit":
         break
     elif "-" in stock:
