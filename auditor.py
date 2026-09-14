@@ -3,4 +3,5 @@ stock = ""
 
 while (stock !="quit"):
     stock = input("Enter stock quantity: ").lower()
-    
+    stock = int(stock)
+
