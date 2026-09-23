@@ -1,4 +1,4 @@
-inventory = 0
+
 
 def get_valid_input():
         stock = input("Enter stock quantity: ").lower()
@@ -9,29 +9,32 @@ def get_valid_input():
         else:
               return "invalid"
 
-get_valid_input()
+def process_delivery(current_total, new_value):
+    if new_value.isdigit():
+        new_value = int(new_value)
+        current_total += new_value
+        current_total += calculate_tax(new_value)
+        return current_total
 
-# stock = ""
-# # rejected_entries = 0
+def calculate_tax(amount):
+    amount = amount * 0.1
+    return amount
 
-# while (stock !="quit"):
-#     stock = input("Enter stock quantity: ").lower()
-#     if stock.isdigit():   # only accepts digits, does not recognise "-" sign
-#         stock = int(stock)
-#         inventory += stock
-        
-# #         if inventory > 500:
-# #                 print("Alert")
-# #                 break
-# #    elif stock == "quit":
-# #        break
-# #     elif "-" in stock:
-# #         print("No negative numbers")
-# #         rejected_entries += 1
-# #     else:
-# #         print("Error")
-# #         rejected_entries += 1
+def generate_report(total_units, failed_attempts):
+    print("Total Deliveries Processed: " + str(total_units))
+    print("Number of Failed/Rejected Entries: " + str(failed_attempts))
 
-# # print("Total Units Processed: " + str(inventory))
-# # print("Number of Failed/Rejected Entries: " + str(rejected_entries))
+
+stock = ""
+inventory = 0
+rejected_entries = 0
+
+while stock !="quit":
+    stock = get_valid_input()
+    if stock.isdigit():
+        inventory = process_delivery(inventory,stock) 
+        print(inventory)
+    elif stock == "invalid":
+        rejected_entries +=1
+
 
