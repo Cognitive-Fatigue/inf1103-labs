@@ -33,8 +33,9 @@ while stock !="quit":
     stock = get_valid_input()
     if stock.isdigit():
         inventory = process_delivery(inventory,stock) 
-        print(inventory)
     elif stock == "invalid":
         rejected_entries +=1
+    else:
+        break
 
-
+generate_report(inventory,rejected_entries)
