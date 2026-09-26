@@ -17,9 +17,9 @@ def load_inventory():
     print("")
     return transaction_id
 
-# def save_inventory(order):
-#     with open("inventory.txt", "a") as file:
-#         file.write(order + "\n")
+def save_inventory(order):
+    with open("inventory.txt", "a") as file:
+        file.write(order + "\n")
 
 transaction_history = []
 
@@ -33,5 +33,5 @@ while True:
     stock = (f"{transaction_id}, {product}, {quantity}")
     print(f"\nNew Order Added: \n{stock}")
     transaction_history.append(stock)
-#    save_inventory(stock)
+    save_inventory(stock)
     print(f"\nOrder successfully saved to orders.txt\n")
