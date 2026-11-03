@@ -179,5 +179,5 @@ def run_system():
         else:
             print("Pick again, invalid option")
 
-# if __name__ == "__main__":
-#     run_system()
+if __name__ == "__main__":
+    run_system()
