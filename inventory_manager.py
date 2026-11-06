@@ -126,123 +126,123 @@ class Inventory:
         return True
 
 
-# # ---------------- Menu / user interaction ----------------
+# ---------------- Menu / user interaction ----------------
 
-# def show_menu():
-#     print("""
-# =======================================
-# INVENTORY MANAGEMENT SYSTEM
-# =======================================
-# """)
-#     inventory = Inventory()
-#     if inventory.load():
-#         print("inventory.json found. \nInventory loaded succesfully.\n ")
-#     else:
-#         print("inventory.json not found. \nInventory created sucessfully.\n")
-#     print("""
-#     -------MENU---------
-#     1. Display All Products
-#     2. Add Product
-#     3. Update Stock
-#     4. Search Product
-#     5. Save Inventory
-#     6. Exit
-#     ----------------------
+def show_menu():
+    print("""
+=======================================
+INVENTORY MANAGEMENT SYSTEM
+=======================================
+""")
+    inventory = Inventory()
+    if inventory.load():
+        print("inventory.json found. \nInventory loaded succesfully.\n ")
+    else:
+        print("inventory.json not found. \nInventory created sucessfully.\n")
+    print("""
+    -------MENU---------
+    1. Display All Products
+    2. Add Product
+    3. Update Stock
+    4. Search Product
+    5. Save Inventory
+    6. Exit
+    ----------------------
 
-#             """)
-#     return inventory
-
-
-# def choose_option(inventory):
-#     mode = 0
-#     while mode !="6":
-#         print("\n")
-#         mode = input("Enter option: ")
-#         print("\n")
-#         if mode == "1":
-#             display_all_products(inventory)
-#         elif mode == "2":
-#             add_product(inventory)
-#         elif mode == "3":
-#             update_stock(inventory)
-#         elif mode == "4":
-#             search_product(inventory)
-#         elif mode == "5":
-#             save_inventory(inventory)
-#         elif mode == "6":
-#             save_inventory(inventory)
-#             print("Saving inventory before exit...")
-#             print("Inventory saved successfully.")
-#             print("")
-#             print("Thank you for using the Inventory Management System.")
-#             print("Program terminated.")
-#         else:
-#             print("Pick again, invalid option")
-
-# def display_all_products(inventory):
-#     print("Current Inventory")
-#     print("=" * 30)
-#     inventory.display_all_products()
-#     print("=" * 30)
-
-# def add_product(inventory):
-#     print("Add New Product")
-#     product_type = input("Product Type (1. Physical / 2. Digital): ")
-#     if product_type not in ("1", "2"):
-#         print("Invalid product type")
-#         return
-#     product_id = input("Product ID: ")
-#     product_name = input("Product Name: ")
-#     price = input("Price: ")
-#     stock_quantity = input("Stock Quantity: ")
-#     if product_type == "1":
-#         weight = input("Weight (kg): ")
-#         product = PhysicalProduct(product_id, product_name, price, stock_quantity, weight)
-#     else:
-#         download_size = input("Download Size (MB): ")
-#         product = DigitalProduct(product_id, product_name, price, stock_quantity, download_size)
-#     inventory.add_product(product)
-#     print("\n")
-#     print("Product added successfully!")
-
-# def update_stock(inventory):
-#     print("Update Stock")
-#     id = input("Enter Product ID: ")
-#     product = inventory.get_product(id)
-#     if product is not None:
-#         print("")
-#         print("Product Found:")
-#         print(f"Name: {product.get_name()}")
-#         print(f"Current Stock: {product.get_stock()}")
-#         print("")
-#         new_stock = input("New Stock Quantity: ")
-#         inventory.update_stock(id, new_stock)
-#     else:
-#         print("Choose another product id, invalid id")
-
-# def search_product(inventory):
-#     print("Search Product")
-#     id = input("Enter Product ID: ")
-#     product = inventory.get_product(id)
-#     if product is not None:
-#         print("")
-#         print("Product Found")
-#         print("=" * 30)
-#         product.display_information()
-#         print(f"Fulfilment: {product.get_fulfilment_info()}")
-#         if isinstance(product, CanBeShipped):  # only products that can be shipped
-#             print(f"Shipping Cost: ${product.calculate_shipping_cost()}")
-#         print("=" * 30)
-#     else:
-#         print("")
-#         print("Product not found.")
-
-# def save_inventory(inventory):
-#     print("Saving inventory...")
-#     inventory.save()
-#     print("Inventory saved successfully to inventory.json")
+            """)
+    return inventory
 
 
-# if __name__ == "__main__":
-#     inventory = show_menu()
-#     choose_option(inventory)
+def choose_option(inventory):
+    mode = 0
+    while mode !="6":
+        print("\n")
+        mode = input("Enter option: ")
+        print("\n")
+        if mode == "1":
+            display_all_products(inventory)
+        elif mode == "2":
+            add_product(inventory)
+        elif mode == "3":
+            update_stock(inventory)
+        elif mode == "4":
+            search_product(inventory)
+        elif mode == "5":
+            save_inventory(inventory)
+        elif mode == "6":
+            save_inventory(inventory)
+            print("Saving inventory before exit...")
+            print("Inventory saved successfully.")
+            print("")
+            print("Thank you for using the Inventory Management System.")
+            print("Program terminated.")
+        else:
+            print("Pick again, invalid option")
+
+def display_all_products(inventory):
+    print("Current Inventory")
+    print("=" * 30)
+    inventory.display_all_products()
+    print("=" * 30)
+
+def add_product(inventory):
+    print("Add New Product")
+    product_type = input("Product Type (1. Physical / 2. Digital): ")
+    if product_type not in ("1", "2"):
+        print("Invalid product type")
+        return
+    product_id = input("Product ID: ")
+    product_name = input("Product Name: ")
+    price = input("Price: ")
+    stock_quantity = input("Stock Quantity: ")
+    if product_type == "1":
+        weight = input("Weight (kg): ")
+        product = PhysicalProduct(product_id, product_name, price, stock_quantity, weight)
+    else:
+        download_size = input("Download Size (MB): ")
+        product = DigitalProduct(product_id, product_name, price, stock_quantity, download_size)
+    inventory.add_product(product)
+    print("\n")
+    print("Product added successfully!")
+
+def update_stock(inventory):
+    print("Update Stock")
+    id = input("Enter Product ID: ")
+    product = inventory.get_product(id)
+    if product is not None:
+        print("")
+        print("Product Found:")
+        print(f"Name: {product.get_name()}")
+        print(f"Current Stock: {product.get_stock()}")
+        print("")
+        new_stock = input("New Stock Quantity: ")
+        inventory.update_stock(id, new_stock)
+    else:
+        print("Choose another product id, invalid id")
+
+def search_product(inventory):
+    print("Search Product")
+    id = input("Enter Product ID: ")
+    product = inventory.get_product(id)
+    if product is not None:
+        print("")
+        print("Product Found")
+        print("=" * 30)
+        product.display_information()
+        print(f"Fulfilment: {product.get_fulfilment_info()}")
+        if isinstance(product, CanBeShipped):  # only products that can be shipped
+            print(f"Shipping Cost: ${product.calculate_shipping_cost()}")
+        print("=" * 30)
+    else:
+        print("")
+        print("Product not found.")
+
+def save_inventory(inventory):
+    print("Saving inventory...")
+    inventory.save()
+    print("Inventory saved successfully to inventory.json")
+
+
+if __name__ == "__main__":
+    inventory = show_menu()
+    choose_option(inventory)
